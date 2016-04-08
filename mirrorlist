@@ -1,0 +1,6 @@
+Server = http://mirror.umd.edu/archlinux/$repo/os/$arch
+Server = http://mirror.jmu.edu/pub/archlinux/$repo/os/$arch
+Server = http://mirror.es.its.nyu.edu/archlinux/$repo/os/$arch
+Server = http://mirror.yellowfiber.net/archlinux/$repo/os/$arch
+Server = http://iad.mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = http://mirror.pw/archlinux/$repo/os/$arch
