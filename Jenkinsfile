@@ -34,6 +34,7 @@ pipeline {
 			}
       build job: 'PowerNex/docker-archlinux-dlang', wait: false
     }
+
 		failure {
 			script {
 				if (env.JOB_NAME.endsWith("_pull-requests"))
