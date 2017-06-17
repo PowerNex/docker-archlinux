@@ -16,5 +16,5 @@ RUN pacman-key --populate && \
 		pacman-db-upgrade
 
 RUN pacman -Sy --noconfirm archlinux-keyring
-	
-RUN pacman -Syyu base-devel --noprogressbar --noconfirm
+
+RUN pacman -Syyu base-devel git --noprogressbar --noconfirm
