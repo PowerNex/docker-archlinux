@@ -1,5 +1,8 @@
 pipeline {
   agent any
+	triggers {
+		cron('0 0 * * 0')
+	}
   stages {
     stage('build') {
       steps {
@@ -8,7 +11,7 @@ pipeline {
 						setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Building Docker image"
 				}
 				ansiColor('xterm') {
-        	sh 'docker build -t "wild/archlinux" .'
+					sh 'docker build -t "wild/archlinux" --no-cache --pull .'
 				}
       }
     }
@@ -20,7 +23,7 @@ pipeline {
 						setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Publishing Docker image"
 				}
 				ansiColor('xterm') {
-       		sh 'docker push "wild/archlinux"'
+					sh 'docker push "wild/archlinux"'
 				}
       }
     }
@@ -32,7 +35,7 @@ pipeline {
 				if (env.JOB_NAME.endsWith("_pull-requests"))
 					setGitHubPullRequestStatus state: 'SUCCESS', context: "${env.JOB_NAME}", message: "Docker image building successed"
 			}
-      build job: 'PowerNex/docker-archlinux-dlang', wait: false
+      build job: '/PowerNex/docker-archlinux-dlang', wait: false
     }
 
 		failure {
